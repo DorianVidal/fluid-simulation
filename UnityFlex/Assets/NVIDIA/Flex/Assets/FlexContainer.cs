@@ -219,7 +219,7 @@ namespace NVIDIA.Flex
         public int[] fluidIndices { get { return m_fluidIndices; } }
         public int fluidIndexCount { get { return m_fluidIndexCount; } }
 
-        public int maxParticles { get { return m_maxParticles; } }
+        public int maxParticles { get { return m_maxParticles; } set { m_maxParticles = (int)value; } }
 
         public Material fluidMaterial { get { return m_fluidMaterial; } }
 
