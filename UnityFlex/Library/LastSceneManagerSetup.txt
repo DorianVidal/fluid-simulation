@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/NVIDIA/Flex Samples/9. Fluid Renderer/Scene.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
