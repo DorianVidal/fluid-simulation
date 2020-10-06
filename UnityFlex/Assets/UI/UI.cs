@@ -8,35 +8,84 @@ using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
-    //Reference de la scene
-    Scene scene = SceneManager.GetActiveScene();
 
-    //Reference de tout les éléments de l'UI
+    
+    /***************************************************PROPERTIES***********************************************************/
+    //Flex
+    public FlexContainer flexContainer;
 
+    //UI**************************
 
-    //Reference du FlexArrayActor
-    public FlexArrayActor bloodReference;
-    public UI UIReference;
+    //SLiders
+    public Slider SliderCohesion;
+    public Slider SliderTension;
+    public Slider SliderViscosity;
+    public Slider SliderVorticity;
 
+    //InputFieds
+    public InputField IFCohesion;
+    public InputField IFTension;
+    public InputField IFViscosity;
+    public InputField IFVorticity;
 
-    private void Awake()
+    public InputField InputNumber;
+    
+
+    /***************************************************FUNCITONS***********************************************************/
+    //Functions
+    public void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-    }
-
-
-    // Start is called before the first frame update
-    public void ChangeMaxParticule(InputField maxParticule)
-    {
-        
-        print(int.Parse(maxParticule.text));
-        bloodReference.GetComponent<FlexContainer>().maxParticles = int.Parse(maxParticule.text);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
+
+    public void Start()
+    {
+        SliderCohesion.minValue = 0;
+        SliderCohesion.maxValue = 1;
+        IFCohesion.text = "0.22";
+
+        SliderTension.minValue = 0;
+        SliderTension.maxValue = 1;
+        IFTension.text = "0.22";
+
+        SliderViscosity.minValue = 0;
+        SliderViscosity.maxValue = 1;
+        IFViscosity.text = "0.22";
+
+        SliderVorticity.minValue = 0;
+        SliderVorticity.maxValue = 1;
+        IFVorticity.text = "0.22";
+
+    }
+
+    public void ChangeCohesion()
+    {
+       flexContainer.cohesion = SliderCohesion.value;
+    }
+   
+
+    public void ChangeTension_Slider()
+    {
+        flexContainer.surfaceTension = SliderTension.value;
+    }
+
+    public void ChangeTension_InputField()
+    {
+        flexContainer.surfaceTension = int.Parse(SliderTension.value);
+    }
+
+    public void ChangeTension_SliderValue(int value)
+    {
+        float Max = SliderTension.maxValue;
+        float NewMax = 
+        if()
+    }
+
+    public void ChangeTension_IputFieldValue(int value)
+    {
+
+    }
+
+
 }
