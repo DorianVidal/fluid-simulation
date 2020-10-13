@@ -23,7 +23,7 @@ public class Save : MonoBehaviour
         tension = flex.surfaceTension;
         viscosity = flex.viscosity;
         adhesion = flex.adhesion;
-        File.WriteAllText(Application.dataPath + "/data.txt", Cohesion, tension, viscosity, adhesion); //Viens creer dans le dossier assets un fichier avec toutes les donées sauvegardées
+        //File.WriteAllText(Application.dataPath + "/data.txt", Cohesion, tension, viscosity, adhesion); //Viens creer dans le dossier assets un fichier avec toutes les donées sauvegardées
     }
 
     void LoadDatas()
