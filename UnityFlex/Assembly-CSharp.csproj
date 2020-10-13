@@ -88,7 +88,8 @@
     <Compile Include="Assets\NVIDIA\Flex\Native\Flex.cs" />
     <Compile Include="Assets\NVIDIA\Flex\Native\FlexExt.cs" />
     <Compile Include="Assets\NVIDIA\Flex\Native\FlexUtils.cs" />
-    <Compile Include="Assets\UI\UI.cs" />
+    <Compile Include="Assets\Scripts\Save.cs" />
+    <Compile Include="Assets\Scripts\UI.cs" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexDrawFluid.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexDrawFluid2.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexDrawFluid.cginc" />
