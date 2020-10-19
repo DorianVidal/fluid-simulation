@@ -237,5 +237,4 @@ public class UI : MonoBehaviour
         }
         SliderAdhesion.value = newValue;
     }
-
 }
