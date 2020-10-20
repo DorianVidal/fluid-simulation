@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Diagnostics;
 using UnityScript.Scripting.Pipeline;
+using UnityEngine.UI;
 
 /*
  * Auteur : Dorian Vidal 
@@ -24,8 +25,34 @@ public class Save : MonoBehaviour
     private float viscosity;
     private float adhesion;
 
+    public Button SaveBtn;
+    public Button LoadBtn;
+
+    public Button UpdateParticuleNumber;
+
+    public UI UIReference;
+
     private string saveSeparator = "%VALUE%";//Cette valeur est un separateur de données, pour éviter de corrompre une donnée, on va 
     //ArrayList<float>[4](Cohesion, tension, viscosity; adhesion);
+
+    public void onClickSaveBtn()
+    {
+        SaveDatas();
+        print("ValueSAved");
+    }
+
+    public void onClickLoadBtn()
+    {
+        LoadDatas();
+        flex.cohesion = Cohesion;
+        flex.surfaceTension = tension;
+        flex.viscosity = viscosity;
+        flex.adhesion = adhesion;
+        // Penser a ajouter cette ligne pour tout les sliders l'UI
+        print("Value Loaded" + Cohesion);
+
+        ChangeValue();
+    }
 
     void SaveDatas()
     {
@@ -33,6 +60,8 @@ public class Save : MonoBehaviour
         tension = flex.surfaceTension;
         viscosity = flex.viscosity;
         adhesion = flex.adhesion;
+
+        print("Les Valeurs : " + " " + Cohesion + " " + tension + " " + viscosity + " " + adhesion);
 
         string[] content = new string[]
         {
@@ -60,22 +89,15 @@ public class Save : MonoBehaviour
         adhesion = float.Parse(content[3]);
 
     }
-
-    private void Update()
+    void ChangeValue()
     {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SaveDatas();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            LoadDatas();
-            flex.cohesion = Cohesion;
-            flex.surfaceTension = tension;
-            flex.viscosity = viscosity;
-            flex.adhesion = adhesion;
-
-        }
-
+        UIReference.IFCohesion.text = Cohesion.ToString();
+        UIReference.ChangeSliderOnInputChangeCohesion(float.Parse(UIReference.IFCohesion.text));
+        UIReference.IFTension.text = tension.ToString();
+        UIReference.ChangeSliderOnInputChangeTension(float.Parse(UIReference.IFTension.text));
+        UIReference.IFViscosity.text = viscosity.ToString();
+        UIReference.ChangeSliderOnInputChangeViscosity(float.Parse(UIReference.IFViscosity.text));
+        UIReference.IFAdhesion.text = adhesion.ToString();
+        UIReference.ChangeSliderOnInputChangeAdhesion(float.Parse(UIReference.IFAdhesion.text));
     }
 }
