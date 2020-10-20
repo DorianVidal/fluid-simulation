@@ -24,7 +24,7 @@ public class Save : MonoBehaviour
     private float tension;
     private float viscosity;
     private float adhesion;
-
+    
     public Button SaveBtn;
     public Button LoadBtn;
 
@@ -33,8 +33,7 @@ public class Save : MonoBehaviour
     public UI UIReference;
 
     private string saveSeparator = "%VALUE%";//Cette valeur est un separateur de données, pour éviter de corrompre une donnée, on va 
-    //ArrayList<float>[4](Cohesion, tension, viscosity; adhesion);
-
+    
     public void onClickSaveBtn()
     {
         SaveDatas();
@@ -47,9 +46,7 @@ public class Save : MonoBehaviour
         flex.cohesion = Cohesion;
         flex.surfaceTension = tension;
         flex.viscosity = viscosity;
-        flex.adhesion = adhesion;
-        // Penser a ajouter cette ligne pour tout les sliders l'UI
-        print("Value Loaded" + Cohesion);
+        flex.adhesion = adhesion;       
 
         ChangeValue();
     }
@@ -100,4 +97,7 @@ public class Save : MonoBehaviour
         UIReference.IFAdhesion.text = adhesion.ToString();
         UIReference.ChangeSliderOnInputChangeAdhesion(float.Parse(UIReference.IFAdhesion.text));
     }
+
+    
+
 }

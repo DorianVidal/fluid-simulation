@@ -5,15 +5,15 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class UI : MonoBehaviour
 {
-
-
     /***************************************************PROPERTIES***********************************************************/
     //Flex
     public FlexContainer flexContainer;
 
+    private string saveSeparator = "%VALUE%";
     //UI**************************
 
     //SLiders
@@ -30,22 +30,21 @@ public class UI : MonoBehaviour
     public InputField IFAdhesion;
     //public InputField IFVorticity;
 
-    //public InputField InputNumber; //Cet attribut influe sur le nombre de particule en temps rééls (pas possible pour le moment)
+    public InputField IFNumberPart; //Cet attribut influe sur le nombre de particule en temps rééls (pas possible pour le moment)
+    public Button LoadParticleNumber;
+
 
 
     /***************************************************FUNCITONS***********************************************************/
     //Functions
-    public void Awake()
-    {
-        //DontDestroyOnLoad(this.gameObject);
-    }
+
 
     public void Start()
     {
         SliderCohesion.minValue = 0;
         SliderCohesion.maxValue = 1;
         IFCohesion.text = "0";
-        
+
         SliderTension.minValue = 0;
         SliderTension.maxValue = 1;
         IFTension.text = "0";
@@ -57,13 +56,10 @@ public class UI : MonoBehaviour
         SliderAdhesion.minValue = 0;
         SliderAdhesion.maxValue = 1;
         IFAdhesion.text = "0";
-        /*
-        SliderVorticity.minValue = 0;
-        SliderVorticity.maxValue = 1;
-        IFVorticity.text = "0.22";*/
+
+        IFNumberPart.text = "40000";
 
     }
-
 
     /***************************************************************COHESION***********************************************************************/
     /*
@@ -97,14 +93,21 @@ public class UI : MonoBehaviour
      */
     public void ChangeSliderOnInputChangeCohesion(float newValue)
     {
-        if (newValue > 1)
+        if (newValue > SliderCohesion.maxValue)
         {
-            SliderCohesion.maxValue = 10;
+            while (newValue > SliderCohesion.maxValue)
+            {
+                SliderCohesion.maxValue = SliderCohesion.maxValue * 10;
+            }
         }
         else
         {
-            SliderCohesion.maxValue = 1;
+            while (newValue < SliderCohesion.maxValue)
+            {
+                SliderCohesion.maxValue = SliderCohesion.maxValue / 10;
+            }
         }
+
         SliderCohesion.value = newValue;
     }
 
@@ -141,14 +144,21 @@ public class UI : MonoBehaviour
      */
     public void ChangeSliderOnInputChangeTension(float newValue)
     {
-        if (newValue > 1)
+        if (newValue > SliderTension.maxValue)
         {
-            SliderTension.maxValue = 10;
+            while (newValue > SliderTension.maxValue)
+            {
+                SliderTension.maxValue = SliderTension.maxValue * 10;
+            }
         }
         else
         {
-            SliderTension.maxValue = 1;
+            while (newValue < SliderTension.maxValue)
+            {
+                SliderTension.maxValue = SliderTension.maxValue / 10;
+            }
         }
+
         SliderTension.value = newValue;
     }
 
@@ -184,15 +194,22 @@ public class UI : MonoBehaviour
      */
     public void ChangeSliderOnInputChangeViscosity(float newValue)
     {
-        if (newValue > 1)
+        if (newValue > SliderViscosity.maxValue)
         {
-            SliderViscosity.maxValue = 10;
+            while (newValue > SliderViscosity.maxValue)
+            {
+                SliderViscosity.maxValue = SliderViscosity.maxValue * 10;
+            }
         }
         else
         {
-            SliderViscosity.maxValue = 1;
+            while (newValue < SliderViscosity.maxValue)
+            {
+                SliderViscosity.maxValue = SliderViscosity.maxValue / 10;
+            }
         }
-        SliderTension.value = newValue;
+
+        SliderViscosity.value = newValue;
     }
 
     /***************************************************************ADHESION***********************************************************************/
@@ -227,15 +244,24 @@ public class UI : MonoBehaviour
      */
     public void ChangeSliderOnInputChangeAdhesion(float newValue)
     {
-        if (newValue > 1)
+        if (newValue > SliderAdhesion.maxValue)
         {
-            SliderAdhesion.maxValue = 10;
+            while (newValue > SliderAdhesion.maxValue)
+            {
+                SliderAdhesion.maxValue = SliderAdhesion.maxValue * 10;
+            }
         }
         else
         {
-            SliderAdhesion.maxValue = 1;
+            while (newValue < SliderAdhesion.maxValue)
+            {
+                SliderAdhesion.maxValue = SliderAdhesion.maxValue / 10;
+            }
         }
+
         SliderAdhesion.value = newValue;
     }
 
 }
+
+
