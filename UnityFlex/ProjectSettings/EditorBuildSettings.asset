@@ -4,5 +4,35 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 08029c80a2ffb274985a4fbdf333f13b
+  - enabled: 1
+    path: Assets/NVIDIA/Flex Samples/1. Array Actor/Array Actor.unity
+    guid: 0cfa9ba4afdcce14581e7f1ecab7b750
+  - enabled: 1
+    path: Assets/NVIDIA/Flex Samples/2. Source Actor/Source Actor.unity
+    guid: 8a674e66417b95b488a566e85da2534c
+  - enabled: 1
+    path: Assets/NVIDIA/Flex Samples/3. Solid Actor/Solid Actor.unity
+    guid: d13f202972d6af842bbc928a863762de
+  - enabled: 1
+    path: Assets/NVIDIA/Flex Samples/4. Soft Actor/Soft Actor.unity
+    guid: cecbb5521b6abeb4ca93a5fde1abcda8
+  - enabled: 1
+    path: Assets/NVIDIA/Flex Samples/5. Cloth Actor/Cloth Actor.unity
+    guid: 29841de7b99bd9f4a9e761a6e2cb6785
+  - enabled: 1
+    path: Assets/NVIDIA/Flex Samples/6. Particle Controller/Particle Controller.unity
+    guid: 3084caadd21e45e489eabfaf5561738a
+  - enabled: 1
+    path: Assets/NVIDIA/Flex Samples/7. Soft Skinning/Soft Skinning.unity
+    guid: 86bfa7b1bfad59149b44c150d58f9b6a
+  - enabled: 1
+    path: Assets/NVIDIA/Flex Samples/8. Cloth Deformation/Cloth Deformation.unity
+    guid: 07da91d39160fde4fa70c6f28d1dd378
+  - enabled: 1
+    path: Assets/NVIDIA/Flex Samples/9. Fluid Renderer/Fluid Renderer.unity
+    guid: 1112609ce9d26474fa79e5771846f2a6
   m_configObjects: {}
