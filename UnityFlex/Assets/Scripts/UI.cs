@@ -30,7 +30,6 @@ public class UI : MonoBehaviour
     public InputField IFAdhesion;
     //public InputField IFVorticity;
 
-    public InputField IFNumberPart; //Cet attribut influe sur le nombre de particule en temps rééls (pas possible pour le moment)
     public Button LoadParticleNumber;
 
 
@@ -56,9 +55,6 @@ public class UI : MonoBehaviour
         SliderAdhesion.minValue = 0;
         SliderAdhesion.maxValue = 1;
         IFAdhesion.text = "0";
-
-        IFNumberPart.text = "40000";
-
     }
 
     /***************************************************************COHESION***********************************************************************/

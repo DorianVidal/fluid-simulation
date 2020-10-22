@@ -10,6 +10,6 @@ public class OpenScenes : MonoBehaviour
     public void OnClickBtn(Text BtnName)
     {
         print(BtnName.text);
-        SceneManager.LoadScene(BtnName.text,);
+        SceneManager.LoadScene(BtnName.text);
     }
 }
