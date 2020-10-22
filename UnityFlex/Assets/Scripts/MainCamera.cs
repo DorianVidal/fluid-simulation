@@ -22,9 +22,11 @@ public class MainCamera : MonoBehaviour
     Vector3 v3CameraPos;
     Quaternion v3CameraRot;
 
+    public float MinDist, CurrentDist, MaxDist, TranslateSpeed, AngleH, AngleV;
 
-    bool mouseClickjudge;
-     // Use this for initialization
+
+    float x, y;
+
     void Start()
     {
         v3CameraPos = gameObject.transform.position;
@@ -35,18 +37,23 @@ public class MainCamera : MonoBehaviour
     }
     void Update()
     {
+        // Reset View
         if (KeyBinding.instance.kResetView.isDown)
         {
             gameObject.transform.position = v3CameraPos;
             gameObject.transform.rotation = v3CameraRot;
         }
 
-        if (KeyBinding.instance.fWheelMouse != 0)
-            transform.Translate(Vector3.forward * KeyBinding.instance.fWheelMouse);
+        // ZOOM DEZOOM
+        if (Input.mouseScrollDelta.y != 0)
+            transform.Translate(Vector3.forward * Input.mouseScrollDelta.y);
 
+        // Last Mouse Pose for PanMove
         if (Input.GetKeyDown(KeyBinding.instance.kPanMove.kcKey))
             v2LastMousePosition = Input.mousePosition;
 
+
+        // PAN MOVE
         if (KeyBinding.instance.kPanMove.isDown)
         {
             if (Input.GetKeyDown(KeyBinding.instance.kPanMove.kcKey))
@@ -56,44 +63,46 @@ public class MainCamera : MonoBehaviour
             Vector2 delta = new Vector2(v2LastMousePosition.x - Input.mousePosition.x, v2LastMousePosition.y - Input.mousePosition.y);
             transform.Translate(delta.x * KeyBinding.instance.fMouseSensitivity, delta.y * KeyBinding.instance.fMouseSensitivity, 0);
             v2LastMousePosition = Input.mousePosition;
-        }            
+        }
 
-        if (target)
-        { 
-            if (KeyBinding.instance.kRotateView.isDown && KeyBinding.instance.kRotateAroundAndZoom.isDown)
-            {
-                Camera.main.transform.LookAt(target.position);
-                transform.Translate(Vector3.right * Input.mousePosition.x * Time.deltaTime);
-                /* transform.RotateAround(target.position, target.up, Input.GetAxis("Mouse X") * 5);
+        // ROTATE Camera
+        if (KeyBinding.instance.kRotateView.isDown && !KeyBinding.instance.kRotateAroundAndZoom.isDown)
+        {
+            float mouseInputX = Input.GetAxis("Mouse X");
+            float mouseInputY = Input.GetAxis("Mouse Y");
 
-                print(transform.rotation.eulerAngles.y + "        " + -Mathf.Cos(transform.rotation.eulerAngles.y));
-                transform.RotateAround(target.position, new Vector3(-Mathf.Cos(transform.rotation.eulerAngles.y), 0, 0), Input.GetAxis("Mouse Y") * 5);
+            Vector3 lookhere = new Vector3(-mouseInputY, mouseInputX, 0);
 
-                if (transform.rotation.eulerAngles.y < 270 && transform.rotation.eulerAngles.y > 90)
-                 {
-                     transform.RotateAround(target.position, new Vector3(0,0,Mathf.Cos(transform.rotation.eulerAngles.y)), Input.GetAxis("Mouse Y") * 5);
-                 }
-                 if (transform.rotation.eulerAngles.y > 270 || transform.rotation.eulerAngles.y < 90)
-                 {
-                     transform.RotateAround(target.position, -target.right, Input.GetAxis("Mouse Y") * 5);
-                 }*/
-            }
-            if (Input.GetMouseButton(1))
-            {
-                velocityX += xSpeed * Input.GetAxis("Mouse X") * distance * 0.02f;
-                velocityY += ySpeed * Input.GetAxis("Mouse Y") * 0.02f;
-            }
-                /* rotationYAxis += velocityX;
-                 rotationXAxis -= velocityY;
-                 rotationXAxis = ClampAngle(rotationXAxis, yMinLimit, yMaxLimit);
-                 Quaternion fromRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
-                 Quaternion toRotation = Quaternion.Euler(rotationXAxis, rotationYAxis, 0);
-                 Quaternion rotation = toRotation;
-                 transform.rotation = rotation;
-                 velocityX = Mathf.Lerp(velocityX, 0, Time.deltaTime * smoothTime);
-                 velocityY = Mathf.Lerp(velocityY, 0, Time.deltaTime * smoothTime);*/
-            }
-    }
+            transform.Rotate(lookhere);
+
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
+        }
+
+        // ROTATE Camera AROUND the selected object
+        if(target)
+        {// A MODIFIER !!!
+
+            x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
+            y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
+
+            y = ClampAngle(y, yMinLimit, yMaxLimit);
+
+            Quaternion rotation = Quaternion.Euler(y, x, 0);
+
+            distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 5, distanceMin, distanceMax);
+
+            //RaycastHit hit;
+            //if (Physics.Linecast(target.position, transform.position, out hit))
+            //{
+            //    distance -= hit.distance;
+            //}
+            Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
+            Vector3 position = rotation * negDistance + target.position;
+
+            transform.rotation = rotation;
+            transform.position = position;
+        }
+}
     public static float ClampAngle(float angle, float min, float max)
     {
         if (angle < -360F)

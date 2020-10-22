@@ -42,7 +42,7 @@ public class KeyBinding : MonoBehaviour
 
     public void Update()
     {
-        fWheelMouse = Input.mouseScrollDelta.y;
+        fWheelMouse += Input.GetAxis("Mouse ScrollWheel");
 
         if (Input.GetKeyDown(kResetView.kcKey))
             kResetView.isDown = true;

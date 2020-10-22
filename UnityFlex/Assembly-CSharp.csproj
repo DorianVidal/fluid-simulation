@@ -98,7 +98,6 @@
     <Compile Include="Assets\Scripts\UIRight.cs" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexDrawFluid.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexDrawFluid2.shader" />
-    <None Include="Assets\Scripts\Gizmo\TEST.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexDrawFluid.cginc" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\SourcePreview.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FluidComposite.shader" />
@@ -112,6 +111,7 @@
     <None Include="Assets\data.txt" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\SurfaceShader.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexPrepareFluid.shader" />
+    <None Include="Assets\Scripts\Gizmo\AlwaysOnTop.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

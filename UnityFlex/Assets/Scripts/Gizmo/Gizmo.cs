@@ -25,12 +25,14 @@ public class Gizmo : MonoBehaviour
 
         if (bMouseDown && goXYZ)
             goXYZ.GetComponent<XYZ>().MouseDrag();
-        if (Input.GetMouseButtonUp(0))
+
+        if (Input.GetKeyUp(KeyBinding.instance.kSelect.kcKey))
         {
             bMouseDown = false;
             goXYZ = null;
         }
-        if(Input.GetMouseButtonDown(0))
+
+        if(Input.GetKeyDown(KeyBinding.instance.kSelect.kcKey) && !KeyBinding.instance.kRotateAroundAndZoom.isDown)
         {
             bMouseDown = true;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
