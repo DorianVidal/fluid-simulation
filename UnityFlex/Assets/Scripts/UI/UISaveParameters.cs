@@ -7,16 +7,7 @@ using System.Diagnostics;
 using UnityScript.Scripting.Pipeline;
 using UnityEngine.UI;
 
-/*
- * Auteur : Dorian Vidal 
- * 
- * Ce script permet la sauvegarde en local des variables d'un preset
- *
- * Utilisation : Creer un empty Game Object et lui ajouter le script
- */
-
-
-public class Save : MonoBehaviour
+public class UISaveParameters : MonoBehaviour
 {
     public FlexContainer flex;
 
@@ -24,34 +15,37 @@ public class Save : MonoBehaviour
     private float tension;
     private float viscosity;
     private float adhesion;
-    
+
     public Button SaveBtn;
     public Button LoadBtn;
 
-    public Button UpdateParticuleNumber;
+    public InputField FileNameToSave;
 
-    public UI UIReference;
+    public GameObject CanvasToCreate;
+
+
+    //public Button UpdateParticuleNumber;
+
+    //public UIParameters UIReference;
 
     private string saveSeparator = "%VALUE%";//Cette valeur est un separateur de données, pour éviter de corrompre une donnée, on va 
-    
+
     public void onClickSaveBtn()
     {
-        SaveDatas();
-        print("ValueSAved");
+        if (FileNameToSave.text != "")
+        {
+            SaveDatas(FileNameToSave.text);
+            print("ValueSAved");
+            FileNameToSave.text = "";
+        }
     }
 
     public void onClickLoadBtn()
     {
-        LoadDatas();
-        flex.cohesion = Cohesion;
-        flex.surfaceTension = tension;
-        flex.viscosity = viscosity;
-        flex.adhesion = adhesion;       
-
-        ChangeValue();
+        GameObject Canvas = Instantiate(CanvasToCreate) as GameObject;
     }
 
-    void SaveDatas()
+    void SaveDatas(string name)
     {
         Cohesion = flex.cohesion;
         tension = flex.surfaceTension;
@@ -62,7 +56,7 @@ public class Save : MonoBehaviour
 
         string[] content = new string[]
         {
-            Cohesion.ToString(), 
+            Cohesion.ToString(),
             tension.ToString(),
             viscosity.ToString(),
             adhesion.ToString()
@@ -70,23 +64,17 @@ public class Save : MonoBehaviour
 
         string saveString = string.Join(saveSeparator, content);
 
-        File.WriteAllText(Application.dataPath + "/data.txt", saveString); //Viens creer dans le dossier assets un fichier avec toutes les donées sauvegardées
-        
+        File.WriteAllText(Application.dataPath + "/" + name + ".txt", saveString); //Viens creer dans le dossier assets un fichier avec toutes les donées sauvegardées
+
     }
 
-    void LoadDatas()
+    void LoadDatas(string name)
     {
-        string saveString = File.ReadAllText(Application.dataPath + "/data.txt");
 
-        string[] content = saveString.Split(new[] { saveSeparator }, System.StringSplitOptions.None);
 
-        Cohesion = float.Parse(content[0]);
-        tension = float.Parse(content[1]);
-        viscosity = float.Parse(content[2]);
-        adhesion = float.Parse(content[3]);
 
     }
-    void ChangeValue()
+    /*void ChangeValue()
     {
         UIReference.IFCohesion.text = Cohesion.ToString();
         UIReference.ChangeSliderOnInputChangeCohesion(float.Parse(UIReference.IFCohesion.text));
@@ -96,8 +84,8 @@ public class Save : MonoBehaviour
         UIReference.ChangeSliderOnInputChangeViscosity(float.Parse(UIReference.IFViscosity.text));
         UIReference.IFAdhesion.text = adhesion.ToString();
         UIReference.ChangeSliderOnInputChangeAdhesion(float.Parse(UIReference.IFAdhesion.text));
-    }
+    }*/
 
-    
+
 
 }

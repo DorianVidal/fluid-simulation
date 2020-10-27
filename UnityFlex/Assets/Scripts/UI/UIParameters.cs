@@ -7,13 +7,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
 
-public class UI : MonoBehaviour
+public class UIParameters : MonoBehaviour
 {
     /***************************************************PROPERTIES***********************************************************/
     //Flex
     public FlexContainer flexContainer;
 
-    private string saveSeparator = "%VALUE%";
     //UI**************************
 
     //SLiders
@@ -21,19 +20,14 @@ public class UI : MonoBehaviour
     public Slider SliderTension;
     public Slider SliderViscosity;
     public Slider SliderAdhesion;
-    //public Slider SliderVorticity;
+    
 
     //InputFieds
     public InputField IFCohesion;
     public InputField IFTension;
     public InputField IFViscosity;
     public InputField IFAdhesion;
-    //public InputField IFVorticity;
-
-    public Button LoadParticleNumber;
-
-
-
+    
     /***************************************************FUNCITONS***********************************************************/
     //Functions
 
