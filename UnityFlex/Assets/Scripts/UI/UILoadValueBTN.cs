@@ -41,6 +41,11 @@ public class UILoadValueBTN : MonoBehaviour
 
     void ChangeValues()
     {
+        print(Cohesion);
+        print(tension);
+        print(viscosity);
+        print(adhesion);
+
         UIReference.IFCohesion.text = Cohesion.ToString();
         UIReference.ChangeSliderOnInputChangeCohesion(float.Parse(UIReference.IFCohesion.text));
         UIReference.IFTension.text = tension.ToString();
@@ -49,5 +54,21 @@ public class UILoadValueBTN : MonoBehaviour
         UIReference.ChangeSliderOnInputChangeViscosity(float.Parse(UIReference.IFViscosity.text));
         UIReference.IFAdhesion.text = adhesion.ToString();
         UIReference.ChangeSliderOnInputChangeAdhesion(float.Parse(UIReference.IFAdhesion.text));
+
+
+        print(flex.cohesion);
+        print(flex.surfaceTension);
+        print(flex.viscosity);
+        print(flex.adhesion);
+
+
+        UIReference.UpdateOnLoad(flex);
+    }
+
+    public void Delete()
+    {
+        string FileName = TextReference.text;
+        File.Delete(Application.dataPath + "/" + FileName);
+        Destroy(this.gameObject);
     }
 }

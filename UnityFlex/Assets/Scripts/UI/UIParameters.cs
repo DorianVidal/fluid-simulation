@@ -32,7 +32,7 @@ public class UIParameters : MonoBehaviour
     //Functions
 
 
-    public void Start()
+    private void Start()
     {
         SliderCohesion.minValue = 0;
         SliderCohesion.maxValue = 1;
@@ -49,6 +49,21 @@ public class UIParameters : MonoBehaviour
         SliderAdhesion.minValue = 0;
         SliderAdhesion.maxValue = 1;
         IFAdhesion.text = "0";
+    }
+
+    public void UpdateOnLoad(FlexContainer flex)
+    {
+        ChangeInputOnSliderChangeCohesion(flex.cohesion);
+        ChangeSliderOnInputChangeCohesion(flex.cohesion);
+
+        ChangeInputOnSliderChangeTension(flex.surfaceTension);
+        ChangeSliderOnInputChangeTension(flex.surfaceTension);
+
+        ChangeInputOnSliderChangeViscosity(flex.viscosity);
+        ChangeSliderOnInputChangeViscosity(flex.viscosity);
+
+        ChangeInputOnSliderChangeAdhesion(flex.adhesion);
+        ChangeSliderOnInputChangeAdhesion(flex.adhesion);
     }
 
     /***************************************************************COHESION***********************************************************************/
@@ -251,6 +266,8 @@ public class UIParameters : MonoBehaviour
 
         SliderAdhesion.value = newValue;
     }
+
+
 
 }
 
