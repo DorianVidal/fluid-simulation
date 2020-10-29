@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TextReference: {fileID: 6858985169816135326}
   flex: {fileID: 11400000, guid: d6a0c634c855ab44ca5436ca48e4164e, type: 2}
-  UIReference: {fileID: 8414131971365408449, guid: bca738134998f9249aef92347d2e2692,
+  UIReference: {fileID: 3139042202545661086, guid: bca738134998f9249aef92347d2e2692,
     type: 3}
 --- !u!1 &2637461887282764256
 GameObject:

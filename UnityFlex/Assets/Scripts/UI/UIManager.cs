@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,26 +16,26 @@ public class UIManager : MonoBehaviour
     public GameObject CanvasSavePreset;
     public GameObject ReturnButton;
 
-    public string CurrentSceneName;
+    public EventSystem eventSystem;
 
-    private GameObject Canvas;
-    private GameObject Canvas2;
-    private GameObject Canvas3;
+    private string CurrentSceneName;
+
+    private List<GameObject>lstCanvas;
 
     private void Awake()
     {
         //This if permit the verification to know if the instance is a singleton
-        if(_instance == null)
+        if (_instance == null)
         {
             _instance = this;
             DontDestroyOnLoad(this.gameObject);
-            //AJOUTER ICI LE CODE SUPPLEMENTAIRE DE L'AWAKE
         }
         else
         {
             Destroy(this);
-        }
+        }        
     }
+    
 
     private void Update()
     {
@@ -43,26 +46,32 @@ public class UIManager : MonoBehaviour
         }        
     }
     public void updateCanvas(string name)
-    {      
+    {
+        lstCanvas = new List<GameObject>();
 
         switch(SceneManager.GetActiveScene().name)
         {
             case "Menu":
-                Canvas = Instantiate(MainMenuCanvas) as GameObject;
+                lstCanvas.Add(Instantiate(MainMenuCanvas) as GameObject);
                 break;
             case "Aort":
                 initialiseAort();
-                break;            
+                break;
+            case "Array Actor":
+                lstCanvas.Add(Instantiate(ReturnButton) as GameObject);
+                //eventSystem = Instantiate(eventSystem) as EventSystem;
+                break;
             default:
-                Canvas = Instantiate(ReturnButton) as GameObject;
+                lstCanvas.Add(Instantiate(ReturnButton) as GameObject);
+                //eventSystem = Instantiate(eventSystem) as EventSystem;                
                 break;
         }
     }
 
     private void initialiseAort()
     {
-        Canvas = Instantiate(CanvasModifieParameters) as GameObject;
-        Canvas2 = Instantiate(CanvasSavePreset) as GameObject;
-        Canvas3 = Instantiate(ReturnButton) as GameObject;
+        lstCanvas.Add(Instantiate(CanvasModifieParameters) as GameObject);
+        lstCanvas.Add(Instantiate(CanvasSavePreset) as GameObject);
+        lstCanvas.Add(Instantiate(ReturnButton) as GameObject);
     }
 }

@@ -51,224 +51,162 @@ public class UIParameters : MonoBehaviour
         IFAdhesion.text = "0";
     }
 
-    public void UpdateOnLoad(FlexContainer flex)
+    public void InputChange(InputField inputField)
     {
-        ChangeInputOnSliderChangeCohesion(flex.cohesion);
-        ChangeSliderOnInputChangeCohesion(flex.cohesion);
 
-        ChangeInputOnSliderChangeTension(flex.surfaceTension);
-        ChangeSliderOnInputChangeTension(flex.surfaceTension);
-
-        ChangeInputOnSliderChangeViscosity(flex.viscosity);
-        ChangeSliderOnInputChangeViscosity(flex.viscosity);
-
-        ChangeInputOnSliderChangeAdhesion(flex.adhesion);
-        ChangeSliderOnInputChangeAdhesion(flex.adhesion);
-    }
-
-    /***************************************************************COHESION***********************************************************************/
-    /*
-     Cette fonciton viens modifier la cohesion grace a un slider
-    */
-    public void ChangeCohesionOnSliderChange()
-    {
-        flexContainer.cohesion = SliderCohesion.value;
-        ChangeInputOnSliderChangeCohesion(SliderCohesion.value);
-    }
-    /*
-     * Cette fonction permet l'update de la valeur de l'inputField en fonction de la valeur du slider
-     */
-
-    public void ChangeInputOnSliderChangeCohesion(float newValue)
-    {
-        IFCohesion.text = newValue.ToString();
-    }
-    /*
-     *Cette fonction viens modifier la cohesion grace a un input
-     */
-    public void ChangeCohesionOnInputChange()
-    {
-        flexContainer.cohesion = float.Parse(IFCohesion.text);
-        print(IFCohesion.text);
-        ChangeSliderOnInputChangeCohesion(float.Parse(IFCohesion.text));
-    }
-
-    /*
-     * Cette fonction permet l'update de la valeur du slider en fonction de la valeur de l'inputField
-     */
-    public void ChangeSliderOnInputChangeCohesion(float newValue)
-    {
-        if (newValue > SliderCohesion.maxValue)
+        //COHESION
+        if(inputField.name == IFCohesion.name)
         {
-            while (newValue > SliderCohesion.maxValue)
+            flexContainer.cohesion = float.Parse(inputField.text);
+            if (flexContainer.cohesion > SliderCohesion.maxValue)
             {
-                SliderCohesion.maxValue = SliderCohesion.maxValue * 10;
+                while (flexContainer.cohesion > SliderCohesion.maxValue)
+                {
+                    SliderCohesion.maxValue = SliderCohesion.maxValue * 10;
+                }
             }
-        }
-        else
-        {
-            while (newValue < SliderCohesion.maxValue)
+            else
             {
-                SliderCohesion.maxValue = SliderCohesion.maxValue / 10;
+                while (flexContainer.cohesion < SliderAdhesion.maxValue)
+                {
+                    SliderCohesion.maxValue = SliderCohesion.maxValue / 10;
+                }
             }
+            SliderCohesion.value = flexContainer.cohesion;
         }
 
-        SliderCohesion.value = newValue;
-    }
-
-    /******************************************************************TENSION****************************************************/
-
-    /*
-     Cette fonciton viens modifier la cohesion grace a un slider
-    */
-    public void ChangeTensionOnSliderChange()
-    {
-        flexContainer.surfaceTension = SliderTension.value;
-        ChangeInputOnSliderChangeTension(SliderTension.value);
-    }
-    /*
-     * Cette fonction permet l'update de la valeur de l'inputField en fonction de la valeur du slider
-     */
-
-    public void ChangeInputOnSliderChangeTension(float newValue)
-    {
-        IFTension.text = newValue.ToString();
-    }
-    /*
-     *Cette fonction viens modifier la cohesion grace a un input
-     */
-    public void ChangeTensionOnInputChange()
-    {
-        flexContainer.surfaceTension = float.Parse(IFTension.text);
-        print(IFTension.text);
-        ChangeSliderOnInputChangeTension(float.Parse(IFTension.text));
-    }
-
-    /*
-     * Cette fonction permet l'update de la valeur du slider en fonction de la valeur de l'inputField
-     */
-    public void ChangeSliderOnInputChangeTension(float newValue)
-    {
-        if (newValue > SliderTension.maxValue)
+        //TENSION
+        if (inputField.name == IFTension.name)
         {
-            while (newValue > SliderTension.maxValue)
+            flexContainer.surfaceTension = float.Parse(inputField.text);
+            if (flexContainer.surfaceTension > SliderTension.maxValue)
             {
-                SliderTension.maxValue = SliderTension.maxValue * 10;
+                while (flexContainer.surfaceTension > SliderTension.maxValue)
+                {
+                    SliderTension.maxValue = SliderTension.maxValue * 10;
+                }
             }
-        }
-        else
-        {
-            while (newValue < SliderTension.maxValue)
+            else
             {
-                SliderTension.maxValue = SliderTension.maxValue / 10;
+                while (flexContainer.surfaceTension < SliderTension.maxValue)
+                {
+                    SliderTension.maxValue = SliderTension.maxValue / 10;
+                }
             }
+            SliderTension.value = flexContainer.surfaceTension;
         }
 
-        SliderTension.value = newValue;
+        //VISCOSITY
+        if (inputField.name == IFViscosity.name)
+        {
+            flexContainer.viscosity = float.Parse(inputField.text);
+            if (flexContainer.viscosity > SliderViscosity.maxValue)
+            {
+                while (flexContainer.viscosity > SliderViscosity.maxValue)
+                {
+                    SliderViscosity.maxValue = SliderViscosity.maxValue * 10;
+                }
+            }
+            else
+            {
+                while (flexContainer.viscosity < SliderViscosity.maxValue)
+                {
+                    SliderViscosity.maxValue = SliderViscosity.maxValue / 10;
+                }
+            }
+            SliderViscosity.value = flexContainer.viscosity;
+        }
+
+        //ADHESION
+        if (inputField.name == IFAdhesion.name)
+        {
+            flexContainer.adhesion = float.Parse(inputField.text);
+            if (flexContainer.adhesion > SliderAdhesion.maxValue)
+            {
+                while (flexContainer.adhesion > SliderAdhesion.maxValue)
+                {
+                    SliderAdhesion.maxValue = SliderAdhesion.maxValue * 10;
+                }
+            }
+            else
+            {
+                while (flexContainer.adhesion < SliderAdhesion.maxValue)
+                {
+                    SliderAdhesion.maxValue = SliderAdhesion.maxValue / 10;
+                }
+            }
+            SliderAdhesion.value = flexContainer.adhesion;
+        }
+
     }
 
-    /***************************************************************VISCOSITY***********************************************************************/
-    /*
-     Cette fonciton viens modifier la cohesion grace a un slider
-    */
-    public void ChangeViscosityOnSliderChange()
-    {
-        flexContainer.viscosity = SliderViscosity.value;
-        ChangeInputOnSliderChangeViscosity(SliderViscosity.value);
-    }
-    /*
-     * Cette fonction permet l'update de la valeur de l'inputField en fonction de la valeur du slider
-     */
 
-    public void ChangeInputOnSliderChangeViscosity(float newValue)
+    //Cette fonction permet la modification en temps réel du container quand un slider est modifier,
+    //elle permet aussi la modification de la valeur du champ de texte quand un slider et modifié
+    public void SliderChange(Slider slider)
     {
-        IFViscosity.text = newValue.ToString();
+        //Cohesion
+        if (slider.name == SliderCohesion.name)
+        {
+            flexContainer.cohesion = slider.value;
+            IFCohesion.text = slider.value.ToString();
+        }
+        //Tension
+        if (slider.name == SliderTension.name)
+        {
+            flexContainer.surfaceTension = slider.value;
+            IFTension.text = slider.value.ToString();
+        }
+        //Viscosity
+        if (slider.name == SliderViscosity.name)
+        {
+            flexContainer.viscosity = slider.value;
+            IFViscosity.text = slider.value.ToString();
+        }
+        //Adhesion
+        if (slider.name == SliderAdhesion.name)
+        {
+            flexContainer.adhesion = slider.value;
+            IFAdhesion.text = slider.value.ToString();
+        }
     }
-    /*
-     *Cette fonction viens modifier la cohesion grace a un input
-     */
-    public void ChangeViscosityOnInputChange()
+
+    public void LoadValue(float cohesion, float tension, float viscosity, float adhesion)
     {
-        flexContainer.viscosity = float.Parse(IFViscosity.text);
+        //Reattribution des valeur pour le containeur
+        flexContainer.cohesion = cohesion;
+        flexContainer.surfaceTension = tension;
+        flexContainer.viscosity = viscosity;
+        flexContainer.adhesion = adhesion;       
+
+        //Mis à jour des valeur dse input field
+        IFCohesion.text = cohesion.ToString();
+        IFTension.text = tension.ToString();
+        IFViscosity.text = viscosity.ToString();
         print(IFViscosity.text);
-        ChangeSliderOnInputChangeViscosity(float.Parse(IFViscosity.text));
+        IFAdhesion.text = adhesion.ToString();
+
+        //mise à jour des sliders
+        updateSlider(SliderCohesion, cohesion);
+        updateSlider(SliderTension, tension);
+        updateSlider(SliderViscosity, viscosity);
+        updateSlider(SliderAdhesion, adhesion);
+
     }
 
-    /*
-     * Cette fonction permet l'update de la valeur du slider en fonction de la valeur de l'inputField
-     */
-    public void ChangeSliderOnInputChangeViscosity(float newValue)
+    private void updateSlider(Slider slider, float value)
     {
-        if (newValue > SliderViscosity.maxValue)
+        if (value > slider.maxValue)
         {
-            while (newValue > SliderViscosity.maxValue)
+            while(value > slider.maxValue)
             {
-                SliderViscosity.maxValue = SliderViscosity.maxValue * 10;
+                slider.maxValue = slider.maxValue * 10;
             }
         }
-        else
+        if (value < slider.maxValue)
         {
-            while (newValue < SliderViscosity.maxValue)
-            {
-                SliderViscosity.maxValue = SliderViscosity.maxValue / 10;
-            }
+            slider.maxValue = slider.maxValue / 10;
         }
-
-        SliderViscosity.value = newValue;
+        slider.value = value;
     }
-
-    /***************************************************************ADHESION***********************************************************************/
-    /*
-     Cette fonciton viens modifier la cohesion grace a un slider
-    */
-    public void ChangeAdhesionOnSliderChange()
-    {
-        flexContainer.adhesion = SliderAdhesion.value;
-        ChangeInputOnSliderChangeAdhesion(SliderAdhesion.value);
-    }
-    /*
-     * Cette fonction permet l'update de la valeur de l'inputField en fonction de la valeur du slider
-     */
-
-    public void ChangeInputOnSliderChangeAdhesion(float newValue)
-    {
-        IFAdhesion.text = newValue.ToString();
-    }
-    /*
-     *Cette fonction viens modifier la cohesion grace a un input
-     */
-    public void ChangeAdhesionOnInputChange()
-    {
-        flexContainer.adhesion = float.Parse(IFAdhesion.text);
-        print(IFAdhesion.text);
-        ChangeSliderOnInputChangeAdhesion(float.Parse(IFAdhesion.text));
-    }
-
-    /*
-     * Cette fonction permet l'update de la valeur du slider en fonction de la valeur de l'inputField
-     */
-    public void ChangeSliderOnInputChangeAdhesion(float newValue)
-    {
-        if (newValue > SliderAdhesion.maxValue)
-        {
-            while (newValue > SliderAdhesion.maxValue)
-            {
-                SliderAdhesion.maxValue = SliderAdhesion.maxValue * 10;
-            }
-        }
-        else
-        {
-            while (newValue < SliderAdhesion.maxValue)
-            {
-                SliderAdhesion.maxValue = SliderAdhesion.maxValue / 10;
-            }
-        }
-
-        SliderAdhesion.value = newValue;
-    }
-
-
-
 }
-
-

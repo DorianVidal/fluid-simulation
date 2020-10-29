@@ -8,7 +8,7 @@ public class UIReturnMainMenu : MonoBehaviour
 {
     public void onClick()
     {
-        SceneManager.UnloadScene(SceneManager.GetActiveScene().name);
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene("Menu");
     }
 }

@@ -307,6 +307,7 @@ GameObject:
   - component: {fileID: 1837783118}
   - component: {fileID: 1837783117}
   - component: {fileID: 1837783116}
+  - component: {fileID: 1837783119}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -362,6 +363,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1837783119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837783115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7cf44ef1fc51514da8a4904122c8a8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5569974061333256644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -374,6 +387,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5569974061684928444, guid: 83d5d3f71507c034989bb8e6df515c81,
+        type: 3}
+      propertyPath: eventSystem
+      value: 
+      objectReference: {fileID: 1837783117}
     - target: {fileID: 5569974061684928445, guid: 83d5d3f71507c034989bb8e6df515c81,
         type: 3}
       propertyPath: m_LocalPosition.x

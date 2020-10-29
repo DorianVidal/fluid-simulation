@@ -100,25 +100,26 @@
     <Compile Include="Assets\Scripts\UI\UIReturnMainMenu.cs" />
     <Compile Include="Assets\Scripts\UI\UIRight.cs" />
     <Compile Include="Assets\Scripts\UI\UISaveParameters.cs" />
+    <Compile Include="Assets\singleton.cs" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexDrawFluid.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexDrawFluid2.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexDrawFluid.cginc" />
+    <None Include="Assets\slider 0.5.txt" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\SourcePreview.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FluidComposite.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FluidDepth.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\DebugPoints.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FluidThickness.shader" />
-    <None Include="Assets\Test.txt" />
+    <None Include="Assets\cohesion.txt" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexDrawParticles.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexFluidShader.shader" />
+    <None Include="Assets\lesquatres1.txt" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\SurfaceTest.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FluidDepthBlur.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\SurfaceShader.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexPrepareFluid.shader" />
     <None Include="Assets\Scripts\Gizmo\AlwaysOnTop.shader" />
-    <None Include="Assets\Test des 4 valeurs.txt" />
-    <None Include="Assets\Blood.txt" />
-    <None Include="Assets\0.9.txt" />
+    <None Include="Assets\AvecUnDix.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
