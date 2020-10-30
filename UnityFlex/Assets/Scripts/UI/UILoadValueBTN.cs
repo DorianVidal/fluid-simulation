@@ -22,6 +22,11 @@ public class UILoadValueBTN : MonoBehaviour
 
     private string saveSeparator = "%VALUE%";
 
+    private void Start()
+    {
+        UIReference = FindObjectOfType<UIParameters>();
+    }
+
     public void LoadValues()
     {
         string FileName = TextReference.text;
@@ -35,19 +40,14 @@ public class UILoadValueBTN : MonoBehaviour
         tension = float.Parse(content[1]);
         viscosity = float.Parse(content[2]);
         adhesion = float.Parse(content[3]);
-        
-        ChangeValues();
+        //Ordre des Paramètre, FLOAT->SLIDER->INPUT_FIELD
+        UIReference.LoadValue(Cohesion, tension, viscosity, adhesion);
     }
 
-    void ChangeValues()
+    public void Delete()
     {
-        UIReference.IFCohesion.text = Cohesion.ToString();
-        UIReference.ChangeSliderOnInputChangeCohesion(float.Parse(UIReference.IFCohesion.text));
-        UIReference.IFTension.text = tension.ToString();
-        UIReference.ChangeSliderOnInputChangeTension(float.Parse(UIReference.IFTension.text));
-        UIReference.IFViscosity.text = viscosity.ToString();
-        UIReference.ChangeSliderOnInputChangeViscosity(float.Parse(UIReference.IFViscosity.text));
-        UIReference.IFAdhesion.text = adhesion.ToString();
-        UIReference.ChangeSliderOnInputChangeAdhesion(float.Parse(UIReference.IFAdhesion.text));
+        string FileName = TextReference.text;
+        File.Delete(Application.dataPath + "/" + FileName);
+        Destroy(this.gameObject);
     }
 }
