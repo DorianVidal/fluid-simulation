@@ -15,8 +15,7 @@ public class UIManager : MonoBehaviour
     public GameObject CanvasModifieParameters;
     public GameObject CanvasSavePreset;
     public GameObject ReturnButton;
-
-    public EventSystem eventSystem;
+    public GameObject LeaveButton;
 
     private string CurrentSceneName;
 
@@ -53,6 +52,7 @@ public class UIManager : MonoBehaviour
         {
             case "Menu":
                 lstCanvas.Add(Instantiate(MainMenuCanvas) as GameObject);
+                lstCanvas.Add(Instantiate(LeaveButton) as GameObject);
                 break;
             case "Aort":
                 initialiseAort();
