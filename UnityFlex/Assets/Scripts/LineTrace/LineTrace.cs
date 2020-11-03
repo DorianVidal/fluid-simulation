@@ -20,15 +20,17 @@ public class LineTrace : MonoBehaviour
     private void Update()
     {
         ParticlesDatas =  FCReference.m_particleData;
+        
         //ParticulesDatas.GetParticle(1);
         if(ParticlesDatas.GetParticle(1) == null)
         {
             particle = ParticlesDatas.GetParticle(1);
+
             trail = Instantiate(TrailReference);            
         }
         else
         {
-            trail.transform.position = particle;
+            //trail.transform.position = particle;
         }
     }
 
