@@ -88,10 +88,12 @@
     <Compile Include="Assets\NVIDIA\Flex\Native\Flex.cs" />
     <Compile Include="Assets\NVIDIA\Flex\Native\FlexExt.cs" />
     <Compile Include="Assets\NVIDIA\Flex\Native\FlexUtils.cs" />
+    <Compile Include="Assets\Scripts\Camera\MainCamera.cs" />
     <Compile Include="Assets\Scripts\Gizmo\Gizmo.cs" />
     <Compile Include="Assets\Scripts\Gizmo\XYZ.cs" />
-    <Compile Include="Assets\Scripts\KeyBinding.cs" />
-    <Compile Include="Assets\Scripts\MainCamera.cs" />
+    <Compile Include="Assets\Scripts\LineTrace\LineTrace.cs" />
+    <Compile Include="Assets\Scripts\Parameters\KeyBinding.cs" />
+    <Compile Include="Assets\Scripts\Tools\singleton.cs" />
     <Compile Include="Assets\Scripts\UI\UILeave.cs" />
     <Compile Include="Assets\Scripts\UI\UILoadValueBTN.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
@@ -101,7 +103,6 @@
     <Compile Include="Assets\Scripts\UI\UIReturnMainMenu.cs" />
     <Compile Include="Assets\Scripts\UI\UIRight.cs" />
     <Compile Include="Assets\Scripts\UI\UISaveParameters.cs" />
-    <Compile Include="Assets\Scripts\singleton.cs" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexDrawFluid.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexDrawFluid2.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexDrawFluid.cginc" />
