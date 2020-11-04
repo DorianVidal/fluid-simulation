@@ -6,31 +6,34 @@ public class MainCamera : MonoBehaviour
 {
     public Transform target;
     public float distance = 2.0f;
+    public float xSpeed = 10.0f;
+    public float ySpeed = 10.0f;
     public float yMinLimit = -90f;
     public float yMaxLimit = 90f;
-    public float smoothTime = 0.1f;
-
+    public float distanceMin = 10f;
+    public float distanceMax = 10f;
+    public float smoothTime = 2f;
+    float rotationYAxis = 0.0f;
+    float rotationXAxis = 0.0f;
+    float velocityX = 0.0f;
+    float velocityY = 0.0f;
     Vector2 v2LastMousePosition;
 
     Vector3 v3CameraPos;
     Quaternion v3CameraRot;
 
+    public float MinDist, CurrentDist, MaxDist, TranslateSpeed, AngleH, AngleV;
+
 
     float x, y;
-
-    private float xSpeed = 10.0f;
-    private float ySpeed = 10.0f;
-
-    private float xSmooth = 0.0f;
-    private float ySmooth = 0.0f;
-    private float xVelocity = -10.0f;
-    private float yVelocity = -10.0f;
-
 
     void Start()
     {
         v3CameraPos = gameObject.transform.position;
         v3CameraRot = gameObject.transform.rotation;
+        Vector3 angles = transform.eulerAngles;
+        rotationYAxis = angles.y;
+        rotationXAxis = angles.x;
     }
     void Update()
     {
@@ -43,10 +46,8 @@ public class MainCamera : MonoBehaviour
 
         // ZOOM DEZOOM
         if (Input.mouseScrollDelta.y != 0)
-        {
             transform.Translate(Vector3.forward * Input.mouseScrollDelta.y);
-            distance = Vector3.Distance(transform.position, target.position);
-        }
+
         // Last Mouse Pose for PanMove
         if (Input.GetKeyDown(KeyBinding.instance.kPanMove.kcKey))
             v2LastMousePosition = Input.mousePosition;
@@ -78,44 +79,30 @@ public class MainCamera : MonoBehaviour
         }
 
         // ROTATE Camera AROUND the selected object
-        if(target && KeyBinding.instance.kRotateAroundAndZoom.isDown)
-        {
-            if(Input.GetKeyDown(KeyBinding.instance.kSelect.kcKey))
-            {
-                distance = Vector3.Distance(target.position, transform.position);
-                //x = transform.rotation.x;
-                //y = transform.rotation.y;
-            }
-            if (KeyBinding.instance.kSelect.isDown)
-            {
-                x += Input.GetAxis("Mouse X") * xSpeed;
-                y -= Input.GetAxis("Mouse Y") * ySpeed;
+        if(target)
+        {// A MODIFIER !!!
 
-                y = Mathf.Clamp(y, yMinLimit, yMaxLimit);
+            x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
+            y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
 
-                /*x += Input.GetAxis("Mouse X") * distance * 0.52f;
-                y -= Input.GetAxis("Mouse Y") * 2.04f;
+            y = ClampAngle(y, yMinLimit, yMaxLimit);
 
-                y = ClampAngle(y, -90, 90);
+            Quaternion rotation = Quaternion.Euler(y, x, 0);
 
-                Quaternion rotation = Quaternion.Euler(y, x, 0);
+            distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 5, distanceMin, distanceMax);
 
-                Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
-                Vector3 position = rotation * negDistance + target.position;
+            //RaycastHit hit;
+            //if (Physics.Linecast(target.position, transform.position, out hit))
+            //{
+            //    distance -= hit.distance;
+            //}
+            Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
+            Vector3 position = rotation * negDistance + target.position;
 
-                transform.rotation = rotation;
-                transform.position = position;*/
-            }
+            transform.rotation = rotation;
+            transform.position = position;
         }
-        if ((int)xVelocity != 0 && (int)yVelocity != 0 || KeyBinding.instance.kRotateAroundAndZoom.isDown && KeyBinding.instance.kSelect.isDown)
-        {
-            xSmooth = Mathf.SmoothDamp(xSmooth, x, ref xVelocity, smoothTime);
-            ySmooth = Mathf.SmoothDamp(ySmooth, y, ref yVelocity, smoothTime);
-
-            transform.localRotation = Quaternion.Euler(ySmooth, xSmooth, 0);
-            transform.position = transform.rotation * new Vector3(0.0f, 0.0f, -distance) + target.position;
-        }
-    }
+}
     public static float ClampAngle(float angle, float min, float max)
     {
         if (angle < -360F)
