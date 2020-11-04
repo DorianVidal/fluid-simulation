@@ -12,6 +12,7 @@ public class KeyBinding : MonoBehaviour
     [SerializeField] private KeyCode kcSelect;
     [SerializeField] private KeyCode kcPanMove;
     [SerializeField] private KeyCode kcResetView;
+    [SerializeField] private KeyCode kcChangeGizmo;
 
     public Key kRotateAroundAndZoom;
     public Key kRotateView;
@@ -20,6 +21,7 @@ public class KeyBinding : MonoBehaviour
     public float fMouseSensitivity;
     public Key kPanMove;
     public Key kResetView;
+    public Key kChangeGizmo;
 
     void Awake()
     {
@@ -38,6 +40,7 @@ public class KeyBinding : MonoBehaviour
         kSelect.kcKey = kcSelect;
         kPanMove.kcKey = kcPanMove;
         kResetView.kcKey = kcResetView;
+        kChangeGizmo.kcKey = kcChangeGizmo;
     }
 
     public void Update()
