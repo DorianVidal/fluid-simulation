@@ -14,16 +14,15 @@ public class Rotate : XYZ
     }
     public override void MouseDrag()
     {
-        print("OFFSET: " + offset);
         Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-        Vector3 curRotation = new Vector3(Camera.main.ScreenToWorldPoint(curScreenPoint).x + offset.x, Camera.main.ScreenToWorldPoint(curScreenPoint).y + offset.y, Camera.main.ScreenToWorldPoint(curScreenPoint).z + offset.z);
+        Vector3 curRotation = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset; //* Ggizmo.fRotationSpeed;// + offset;
         
         if (X)
-            Ggizmo.rotation = Quaternion.Euler(curRotation.x, Ggizmo.goSelect.transform.rotation.eulerAngles.y, Ggizmo.goSelect.transform.rotation.eulerAngles.z); //X
+            Ggizmo.QRotation = Quaternion.Euler(curRotation.x, Ggizmo.goSelect.transform.rotation.eulerAngles.y, Ggizmo.goSelect.transform.rotation.eulerAngles.z); //X
         if (Y)
-            Ggizmo.rotation = Quaternion.Euler(Ggizmo.goSelect.transform.rotation.eulerAngles.x, curRotation.y, Ggizmo.goSelect.transform.rotation.eulerAngles.z); //Y
+            Ggizmo.QRotation = Quaternion.Euler(Ggizmo.goSelect.transform.rotation.eulerAngles.x, curRotation.y, Ggizmo.goSelect.transform.rotation.eulerAngles.z); //Y
         if (Z)
-            Ggizmo.rotation = Quaternion.Euler(Ggizmo.goSelect.transform.rotation.eulerAngles.x, Ggizmo.goSelect.transform.rotation.eulerAngles.y, curRotation.z); //Z
+            Ggizmo.QRotation = Quaternion.Euler(Ggizmo.goSelect.transform.rotation.eulerAngles.x, Ggizmo.goSelect.transform.rotation.eulerAngles.y, curRotation.z); //Z
         base.MouseDrag();
     }
 }

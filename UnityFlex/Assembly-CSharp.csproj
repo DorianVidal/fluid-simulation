@@ -90,6 +90,7 @@
     <Compile Include="Assets\NVIDIA\Flex\Native\FlexUtils.cs" />
     <Compile Include="Assets\Scripts\Gizmo\Gizmo.cs" />
     <Compile Include="Assets\Scripts\Gizmo\Rotate.cs" />
+    <Compile Include="Assets\Scripts\Gizmo\Scale.cs" />
     <Compile Include="Assets\Scripts\Gizmo\Translate.cs" />
     <Compile Include="Assets\Scripts\Gizmo\XYZ.cs" />
     <Compile Include="Assets\Scripts\KeyBinding.cs" />

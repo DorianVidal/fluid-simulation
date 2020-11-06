@@ -8,12 +8,14 @@ public class Gizmo : MonoBehaviour
     public GameObject goGizmo;
     public GameObject goSelect;
     private GameObject goXYZ;
-    public bool bIsTranslate = true;
+    public int iGizmoMode = 0;
+    public float fRotationSpeed;
     private bool bMouseDown;
     private float fDistanceCamera;
 
 
-    [HideInInspector] public Quaternion rotation;
+    [HideInInspector] public Quaternion QRotation;
+    [HideInInspector] public Vector3 V3Scale;
 
     void Start()
     {
@@ -33,7 +35,10 @@ public class Gizmo : MonoBehaviour
 
         if (Input.GetKeyDown(KeyBinding.instance.kChangeGizmo.kcKey))
         {
-            bIsTranslate = !bIsTranslate;
+            if (iGizmoMode == 2)
+                iGizmoMode = 0;
+            else
+                iGizmoMode++;
             SetPosAndRotGizmo(goSelect.transform);
             ActiveMode();
         }
@@ -59,10 +64,28 @@ public class Gizmo : MonoBehaviour
                 SelectGameObject();
             }
         }
-        if (goSelect && bIsTranslate)
-            goSelect.transform.position = goGizmo.transform.position; //Set Position of selected object
-        else if (goSelect)
-            goSelect.transform.rotation = rotation; //Set Rotation of selected object
+        if (goSelect)
+        {
+            //print(goSelect.transform.rotation.eulerAngles.y);
+            //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, goSelect.transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+            switch (iGizmoMode)
+            {
+                case 0:
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                    goSelect.transform.position = transform.position; //Set Position of selected object
+                    break;
+                case 1:
+                    transform.rotation = Quaternion.Euler(goSelect.transform.rotation.eulerAngles.x, goSelect.transform.rotation.eulerAngles.y, goSelect.transform.rotation.eulerAngles.z);
+                    goSelect.transform.rotation = QRotation; //Set Rotation of selected object
+                    break;
+                case 2:
+                    transform.rotation = Quaternion.Euler(goSelect.transform.rotation.eulerAngles.x, goSelect.transform.rotation.eulerAngles.y, goSelect.transform.rotation.eulerAngles.z);
+                    goSelect.transform.localScale = V3Scale; //Set Scale of selected object
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     //When you select
@@ -70,16 +93,16 @@ public class Gizmo : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity) && hit.transform.gameObject.layer != LayerMask.NameToLayer("Gizmo"))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity) && hit.transform.gameObject.layer != LayerMask.NameToLayer("Gizmo") && hit.transform.gameObject.layer != LayerMask.NameToLayer("Background"))
         {
             ActiveMode();
-            if (hit.transform.parent)
+            if (hit.transform.parent != null)
             {
                 goSelect = hit.transform.parent.gameObject;
 
-                SetPosAndRotGizmo(goSelect.transform.parent.transform);
+                SetPosAndRotGizmo(goSelect.transform);
             }
-            else if(hit.transform.gameObject)
+            else if(hit.transform.gameObject != null)
             {
                 goSelect = hit.transform.gameObject;
 
@@ -100,13 +123,29 @@ public class Gizmo : MonoBehaviour
 
     void ActiveMode()
     {
-        gameObject.transform.GetChild(0).gameObject.SetActive(bIsTranslate);
-        gameObject.transform.GetChild(1).gameObject.SetActive(!bIsTranslate);
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        gameObject.transform.GetChild(2).gameObject.SetActive(false);
+        switch (iGizmoMode)
+        {
+            case 0:
+                gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                break;
+            case 1:
+                gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                break;
+            case 2:
+                gameObject.transform.GetChild(2).gameObject.SetActive(true);
+                break;
+            default:
+                break;
+        }
     }
 
     void SetPosAndRotGizmo(Transform SelectedObject)
     {
         goGizmo.transform.position = SelectedObject.position;
-        goGizmo.GetComponent<Gizmo>().rotation = SelectedObject.rotation;
+        QRotation = SelectedObject.rotation;
+        V3Scale = SelectedObject.localScale;
     }
 }
