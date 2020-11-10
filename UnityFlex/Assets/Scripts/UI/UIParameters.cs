@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
+using UnityEditor;
 
 public class UIParameters : MonoBehaviour
 {
@@ -27,6 +28,11 @@ public class UIParameters : MonoBehaviour
     public InputField IFTension;
     public InputField IFViscosity;
     public InputField IFAdhesion;
+
+
+    //Materials
+    private Renderer rd;
+    public GameObject aort;
     
     /***************************************************FUNCITONS***********************************************************/
     //Functions
@@ -49,6 +55,10 @@ public class UIParameters : MonoBehaviour
         SliderAdhesion.minValue = 0;
         SliderAdhesion.maxValue = 1;
         IFAdhesion.text = "0";
+
+
+        rd = GameObject.FindGameObjectWithTag("aort").GetComponent<Renderer>();
+        Debug.Log(rd);
     }
 
     public void InputChange(InputField inputField)
@@ -208,5 +218,11 @@ public class UIParameters : MonoBehaviour
             slider.maxValue = slider.maxValue / 10;
         }
         slider.value = value;
+    }
+
+
+    public void ChangeTransparency(Slider sliderTransparency)
+    {        
+       rd.material.SetFloat("Transparency", sliderTransparency.value);
     }
 }

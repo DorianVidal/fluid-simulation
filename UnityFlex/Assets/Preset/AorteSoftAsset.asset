@@ -5388,7 +5388,7 @@ MonoBehaviour:
   m_rebuildAsset: 0
   m_boundaryMesh: {fileID: -5495902117074765545, guid: 96d3385ee45545140a1afe97f3ecc23b,
     type: 3}
-  m_meshLocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_meshLocalScale: {x: 1, y: 1, z: 1}
   m_particleSpacing: 0.05
   m_volumeSampling: 2
   m_surfaceSampling: 1
