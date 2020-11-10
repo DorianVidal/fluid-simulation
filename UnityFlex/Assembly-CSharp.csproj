@@ -113,6 +113,7 @@
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FluidDepth.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\DebugPoints.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FluidThickness.shader" />
+    <None Include="Assets\Saders\Hologram.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexDrawParticles.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexFluidShader.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\SurfaceTest.shader" />
