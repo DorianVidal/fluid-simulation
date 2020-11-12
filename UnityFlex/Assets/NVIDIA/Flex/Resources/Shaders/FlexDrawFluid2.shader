@@ -43,7 +43,7 @@ Shader "Flex/FlexDrawFluid2" {
     
 
     // ---- forward rendering base pass:
-    Pass {
+        Pass {
         Name "FORWARD"
         Tags { "LightMode" = "ForwardBase" }
         Cull off
