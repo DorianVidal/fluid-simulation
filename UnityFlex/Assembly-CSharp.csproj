@@ -95,6 +95,7 @@
     <Compile Include="Assets\Scripts\Gizmo\Scale.cs" />
     <Compile Include="Assets\Scripts\Gizmo\Translate.cs" />
     <Compile Include="Assets\Scripts\Gizmo\XYZ.cs" />
+    <Compile Include="Assets\Scripts\LineTrace\LineTrace.cs" />
     <Compile Include="Assets\Scripts\UI\UILeave.cs" />
     <Compile Include="Assets\Scripts\UI\UILoadValueBTN.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
@@ -116,6 +117,7 @@
     <None Include="Assets\Saders\Hologram.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexDrawParticles.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexFluidShader.shader" />
+    <None Include="Assets\Saders\Fluid.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\SurfaceTest.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FluidDepthBlur.shader" />
     <None Include="Assets\NVIDIA\Flex\Resources\Shaders\SurfaceShader.shader" />
