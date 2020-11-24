@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/MainScene.unity
+- path: Assets/Scenes/Flex Samples/2. Source Actor/Source Actor.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

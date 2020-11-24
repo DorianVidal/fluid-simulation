@@ -88,6 +88,7 @@
     <Compile Include="Assets\NVIDIA\Flex\Native\Flex.cs" />
     <Compile Include="Assets\NVIDIA\Flex\Native\FlexExt.cs" />
     <Compile Include="Assets\NVIDIA\Flex\Native\FlexUtils.cs" />
+    <Compile Include="Assets\Scripts\DrawLinesParticles.cs" />
     <Compile Include="Assets\Scripts\Gizmo\Gizmo.cs" />
     <Compile Include="Assets\Scripts\Gizmo\Rotate.cs" />
     <Compile Include="Assets\Scripts\Gizmo\Scale.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Assets\Scripts\Gizmo\XYZ.cs" />
     <Compile Include="Assets\Scripts\KeyBinding.cs" />
     <Compile Include="Assets\Scripts\MainCamera.cs" />
+    <Compile Include="Assets\Scripts\ParticlePos.cs" />
     <Compile Include="Assets\Scripts\UI\UILeave.cs" />
     <Compile Include="Assets\Scripts\UI\UILoadValueBTN.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />

@@ -3544,6 +3544,55 @@ RectTransform:
   m_AnchoredPosition: {x: 119, y: 0}
   m_SizeDelta: {x: -138, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1152653539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1152653541}
+  - component: {fileID: 1152653540}
+  m_Layer: 0
+  m_Name: DrawLinesParticules
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1152653540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152653539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37fa10f5760effa46a821dfee9cb59d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fcContainer: {fileID: 11400000, guid: ab7626ead04b8dd4aa7054c5a918fb48, type: 2}
+  goLineTraceByParticle: {fileID: 4177819066579964307, guid: 3db1ac4edba83f74183aaddc065cb557,
+    type: 3}
+  iNumberLines: 10
+  fTimeBetweenPos: 0.1
+  iParticleToSkip: 100
+--- !u!4 &1152653541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152653539}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.504648, y: 2.38346, z: -0.8138046}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1196342335
 GameObject:
   m_ObjectHideFlags: 0
@@ -5221,7 +5270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c98aa481050edb4ca1850cb5c2953ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_container: {fileID: 11400000, guid: d6a0c634c855ab44ca5436ca48e4164e, type: 2}
+  m_container: {fileID: 11400000, guid: ab7626ead04b8dd4aa7054c5a918fb48, type: 2}
   m_particleGroup: -1
   m_selfCollide: 1
   m_selfCollideFilter: 0

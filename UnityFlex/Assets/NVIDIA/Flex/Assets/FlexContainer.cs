@@ -813,7 +813,7 @@ namespace NVIDIA.Flex
 #endif
 
         [NonSerialized]
-        int[] m_fluidIndices = new int[0];
+        public int[] m_fluidIndices = new int[0];
         [NonSerialized]
         int m_fluidIndexCount = 0;
         [NonSerialized]
@@ -822,7 +822,7 @@ namespace NVIDIA.Flex
         [NonSerialized]
         _auxFlexDetectShapes m_detectShapesHelper = null;
 
-        Vector4[] m_particleArray = null;
+        public Vector4[] m_particleArray = null; //Private (base)
         ComputeBuffer m_particleBuffer;
 
         List<GameObject> m_destroyObjects = new List<GameObject>();
