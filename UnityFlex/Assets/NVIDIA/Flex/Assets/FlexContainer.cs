@@ -822,7 +822,7 @@ namespace NVIDIA.Flex
         [NonSerialized]
         _auxFlexDetectShapes m_detectShapesHelper = null;
 
-        Vector4[] m_particleArray = null;
+        public Vector4[] m_particleArray = null;
         ComputeBuffer m_particleBuffer;
 
         List<GameObject> m_destroyObjects = new List<GameObject>();

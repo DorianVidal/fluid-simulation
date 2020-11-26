@@ -11,8 +11,17 @@ using UnityEditor;
 public class UIParameters : MonoBehaviour
 {
     /***************************************************PROPERTIES***********************************************************/
+    bool toggle = false;
+
     //Flex
     public FlexContainer flexContainer;
+
+    //LineTrace   
+    private GameObject lineParticles;
+
+    //Materials
+    private Renderer rd;
+    public GameObject aort;
 
     //UI**************************
 
@@ -29,12 +38,12 @@ public class UIParameters : MonoBehaviour
     public InputField IFViscosity;
     public InputField IFAdhesion;
 
+    //Toggle
+    public Toggle TGTrajectories;
 
-    //Materials
-    private Renderer rd;
-    public GameObject aort;
-    
-    /***************************************************FUNCITONS***********************************************************/
+    //Buttons
+    public Button BtnCalculTraj;
+    /***************************************************FUNCTIONS***********************************************************/
     //Functions
 
 
@@ -59,6 +68,9 @@ public class UIParameters : MonoBehaviour
 
         rd = GameObject.FindGameObjectWithTag("aort").GetComponent<Renderer>();
         Debug.Log(rd);
+
+
+        lineParticles = GameObject.FindObjectOfType<DrawLinesParticles>().gameObject;
     }
 
     public void InputChange(InputField inputField)
@@ -225,4 +237,20 @@ public class UIParameters : MonoBehaviour
     {        
        rd.material.SetFloat("Transparency", sliderTransparency.value);
     }
+
+    public void DisplayLineTrace()
+    {
+        toggle = !toggle;
+
+        //BtnCalculTraj.interactable(TGTrajectories.GetComponent<Toggle>().isOn);
+        BtnCalculTraj.interactable = toggle;
+        lineParticles.SetActive(toggle);    
+    }
+
+    public void CalculLines()
+    {
+        lineParticles.GetComponent<DrawLinesParticles>().Calcule();
+    }
+
+    
 }
