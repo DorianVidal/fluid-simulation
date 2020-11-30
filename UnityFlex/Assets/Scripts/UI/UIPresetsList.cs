@@ -22,6 +22,7 @@ public class UIPresetsList : MonoBehaviour
             NewBtn.transform.SetParent(ListReference.transform, false);
             Text TxtBtn = NewBtn.GetComponentInChildren<Text>();
             TxtBtn.text = file.Name;
+            print("Nouveau Bouton Ajouté :" + TxtBtn.text);
         }        
     }
     public void DeleteList()
