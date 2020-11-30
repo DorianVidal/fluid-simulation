@@ -1943,6 +1943,7 @@ GameObject:
   - component: {fileID: 1052851786574930394}
   - component: {fileID: 3840683172395009219}
   - component: {fileID: 3139042202545661086}
+  - component: {fileID: 8778886389668387646}
   m_Layer: 5
   m_Name: CanvasModifieParameters
   m_TagString: Untagged
@@ -2054,6 +2055,19 @@ MonoBehaviour:
   IFAdhesion: {fileID: 7518327744236923477}
   TGTrajectories: {fileID: 0}
   BtnCalculTraj: {fileID: 5484220913524874248}
+--- !u!114 &8778886389668387646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3747747032125481093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b7beb6aad443940bc3ba132acca831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Panel: {fileID: 9054118514760300922}
 --- !u!1 &3912504002183652798
 GameObject:
   m_ObjectHideFlags: 0
@@ -4596,7 +4610,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9054118514760300922}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e6a2466d17d5b5b47b54ae5323bc99c1, type: 2}
   m_CullingMode: 0

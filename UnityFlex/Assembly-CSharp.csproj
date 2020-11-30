@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scripts\LineTrace\LineTrace.cs" />
     <Compile Include="Assets\Scripts\ParticlePos.cs" />
     <Compile Include="Assets\Scripts\UI\UILeave.cs" />
+    <Compile Include="Assets\Scripts\UI\UILeft.cs" />
     <Compile Include="Assets\Scripts\UI\UILoadValueBTN.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\UI\UIOpenScenes.cs" />

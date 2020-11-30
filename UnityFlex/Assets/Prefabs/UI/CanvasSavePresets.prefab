@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 2442933920409046414}
   - component: {fileID: 2442933920409046415}
   - component: {fileID: 1930176619160543442}
+  - component: {fileID: 5172710205417472640}
   m_Layer: 5
   m_Name: CanvasSavePresets
   m_TagString: Untagged
@@ -274,6 +275,19 @@ MonoBehaviour:
   FileNameToSave: {fileID: 2761148332289323156}
   CanvasToCreate: {fileID: 3412062973312209960, guid: 81bbf13a1cfe2c940bdc56d230aa78dd,
     type: 3}
+--- !u!114 &5172710205417472640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2442933920409046412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 623ed1e6aac41ac4b8c01a8a4b44a1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Panel: {fileID: 5415246904358981191}
 --- !u!1 &3242052819057239291
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +507,7 @@ GameObject:
   - component: {fileID: 3385762126424884572}
   - component: {fileID: 6543545336024240440}
   - component: {fileID: 1617178467668640904}
+  - component: {fileID: 7520255013053338731}
   m_Layer: 5
   m_Name: LeftPanel
   m_TagString: Untagged
@@ -520,7 +535,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: 0}
+  m_AnchoredPosition: {x: -369, y: 0}
   m_SizeDelta: {x: 200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6543545336024240440
@@ -560,6 +575,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &7520255013053338731
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5415246904358981191}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e6bff3c312caaa449448184746558c5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5494581380235366106
 GameObject:
   m_ObjectHideFlags: 0

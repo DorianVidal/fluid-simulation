@@ -71,6 +71,7 @@ public class UIParameters : MonoBehaviour
 
 
         lineParticles = GameObject.FindObjectOfType<DrawLinesParticles>().gameObject;
+        lineParticles.SetActive(toggle);
     }
 
     public void InputChange(InputField inputField)
@@ -249,7 +250,9 @@ public class UIParameters : MonoBehaviour
 
     public void CalculLines()
     {
+       
         lineParticles.GetComponent<DrawLinesParticles>().Calcule();
+        
     }
 
     
