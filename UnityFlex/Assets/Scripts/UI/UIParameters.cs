@@ -251,7 +251,7 @@ public class UIParameters : MonoBehaviour
     public void CalculLines()
     {
        
-        lineParticles.GetComponent<DrawLinesParticles>().Calcule();
+        //lineParticles.GetComponent<DrawLinesParticles>().Calcule();
         
     }
 

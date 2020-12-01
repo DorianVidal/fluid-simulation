@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5841177169059728250}
   - component: {fileID: 2647695127492497786}
   m_Layer: 0
-  m_Name: LineRenderer
+  m_Name: LineTraceByParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9079401443218443754}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -141,8 +141,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ccb710ae9d19a4b9fade1ad703c49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fcContainer: {fileID: 0}
-  lrLineRenderer: {fileID: 0}
-  fTimer: 0
-  iBeforeLastParticle: 0
-  fsaFlexSourceActor: {fileID: 0}
+  goLineRenderer: {fileID: 5415697372220817172, guid: 857dc5f9ad80420469e49aabb8d0128f,
+    type: 3}
