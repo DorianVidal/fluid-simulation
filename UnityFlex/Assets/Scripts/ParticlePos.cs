@@ -18,7 +18,7 @@ public class ParticlePos : MonoBehaviour
     private float fmaxSpeed = -Mathf.Infinity;
     private float fminSpeed = Mathf.Infinity;
     private List<float> Speeds;
-    private List<LineRenderer> listlrLineRenderer;
+    public List<LineRenderer> listlrLineRenderer;
     private float fLengthOfLine;
 
     bool bDoOnce = false;
@@ -43,6 +43,7 @@ public class ParticlePos : MonoBehaviour
             if (fcContainer.m_particleArray[fcContainer.m_particleArray.Length - iBeforeLastParticle] != Vector4.zero && listlrLineRenderer.Count < fsaFlexSourceActor.lifeTime * 8)
             {
                 CreateLine();
+                gameObject.GetComponentInParent<DrawLinesParticles>().StartOfLines();
                 if (listlrLineRenderer.Count == 2)
                     listlrLineRenderer[0].SetPosition(0, fcContainer.m_particleArray[fcContainer.m_particleArray.Length - iBeforeLastParticle]);
 
@@ -51,35 +52,41 @@ public class ParticlePos : MonoBehaviour
                 //lrLineRenderer.positionCount = lrLineRenderer.positionCount + 1;
                 //lrLineRenderer.SetPosition(i, fcContainer.m_particleArray[fcContainer.m_particleArray.Length - iBeforeLastParticle]);
                 //i++;
-            }
-            else if (listlrLineRenderer.Count >= fsaFlexSourceActor.lifeTime * 8 && !bDoOnce)
-            {
-                for (int i = 0; i < listlrLineRenderer.Count - 1; i++)
-                {
-                    if (GetSpeed(listlrLineRenderer[i].GetPosition(0), listlrLineRenderer[i].GetPosition(1)) > fmaxSpeed)
-                        fmaxSpeed = GetSpeed(listlrLineRenderer[i].GetPosition(0), listlrLineRenderer[i].GetPosition(1));
-                    if (GetSpeed(listlrLineRenderer[i].GetPosition(0), listlrLineRenderer[i].GetPosition(1)) < fminSpeed)
-                        fminSpeed = GetSpeed(listlrLineRenderer[i].GetPosition(0), listlrLineRenderer[i].GetPosition(1));
-                }
-                for (int i = 0; i < listlrLineRenderer.Count - 1; i++)
-                {
-                    Speeds.Add(GetSpeed(listlrLineRenderer[i].GetPosition(0), listlrLineRenderer[i].GetPosition(1)));
-                    fLengthOfLine += Vector4.Distance(listlrLineRenderer[i].GetPosition(0), listlrLineRenderer[i].GetPosition(1));
-                }
-                float fLengthOfPoint = 0;
-                for (int i = 0; i < listlrLineRenderer.Count - 1; i++)
-                {
-                    fLengthOfPoint += Vector4.Distance(listlrLineRenderer[i].GetPosition(0), listlrLineRenderer[i].GetPosition(1));
-                    if (i >= 1)
-                        listlrLineRenderer[i].startColor = listlrLineRenderer[i - 1].endColor;//GGradientColor.Evaluate((Speeds[i] - fminSpeed) / (fmaxSpeed - fminSpeed));
+                //}
+                //else if (listlrLineRenderer.Count >= fsaFlexSourceActor.lifeTime * 8 && !bDoOnce)
+                //{
 
-                    listlrLineRenderer[i].endColor = GGradientColor.Evaluate((Speeds[i] - fminSpeed) / (fmaxSpeed - fminSpeed));
+                if (listlrLineRenderer.Count <= fsaFlexSourceActor.lifeTime * 8)
+                {
+                    Speeds.Clear();
+                    for (int i = 0; i < listlrLineRenderer.Count - 1; i++)
+                    {
+                        if (GetSpeed(listlrLineRenderer[i].GetPosition(0), listlrLineRenderer[i].GetPosition(1)) > fmaxSpeed)
+                            fmaxSpeed = GetSpeed(listlrLineRenderer[i].GetPosition(0), listlrLineRenderer[i].GetPosition(1));
+                        if (GetSpeed(listlrLineRenderer[i].GetPosition(0), listlrLineRenderer[i].GetPosition(1)) < fminSpeed)
+                            fminSpeed = GetSpeed(listlrLineRenderer[i].GetPosition(0), listlrLineRenderer[i].GetPosition(1));
+                    }
+                    for (int i = 0; i < listlrLineRenderer.Count - 1; i++)
+                    {
+                        Speeds.Add(GetSpeed(listlrLineRenderer[i].GetPosition(0), listlrLineRenderer[i].GetPosition(1)));
+                        fLengthOfLine += Vector4.Distance(listlrLineRenderer[i].GetPosition(0), listlrLineRenderer[i].GetPosition(1));
+                    }
+                    float fLengthOfPoint = 0;
+                    for (int i = 0; i < listlrLineRenderer.Count - 1; i++)
+                    {
+                        fLengthOfPoint += Vector4.Distance(listlrLineRenderer[i].GetPosition(0), listlrLineRenderer[i].GetPosition(1));
+                        if (i >= 1)
+                            listlrLineRenderer[i].startColor = listlrLineRenderer[i - 1].endColor;//GGradientColor.Evaluate((Speeds[i] - fminSpeed) / (fmaxSpeed - fminSpeed));
 
-                    //listgoLineRenderer[i].GetComponent<LineRenderer>().endColor = new Color(Speeds[i] / fmaxSpeed, Speeds[i] / fmaxSpeed, 0, 1);
+                        listlrLineRenderer[i].endColor = GGradientColor.Evaluate((Speeds[i] - fminSpeed) / (fmaxSpeed - fminSpeed));
+
+                        //listgoLineRenderer[i].GetComponent<LineRenderer>().endColor = new Color(Speeds[i] / fmaxSpeed, Speeds[i] / fmaxSpeed, 0, 1);
+                    }
+                    bDoOnce = true;
                 }
-                bDoOnce = true;
             }
             fChrono = fTimer;
+            
         }
         /*fChrono -= Time.deltaTime;
 

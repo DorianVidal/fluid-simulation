@@ -11,7 +11,7 @@ using UnityEditor;
 public class UIParameters : MonoBehaviour
 {
     /***************************************************PROPERTIES***********************************************************/
-    bool toggle = false;
+    bool toggle = true;
 
     //Flex
     public FlexContainer flexContainer;
@@ -30,6 +30,8 @@ public class UIParameters : MonoBehaviour
     public Slider SliderTension;
     public Slider SliderViscosity;
     public Slider SliderAdhesion;
+
+    public Slider SliderTransparency;
     
 
     //InputFieds
@@ -72,6 +74,8 @@ public class UIParameters : MonoBehaviour
 
         lineParticles = GameObject.FindObjectOfType<DrawLinesParticles>().gameObject;
         lineParticles.SetActive(toggle);
+        rd.material.SetFloat("Transparency", 1.0f);
+
     }
 
     public void InputChange(InputField inputField)
@@ -235,8 +239,11 @@ public class UIParameters : MonoBehaviour
 
 
     public void ChangeTransparency(Slider sliderTransparency)
-    {        
-       rd.material.SetFloat("Transparency", sliderTransparency.value);
+    {
+        //rd.material.SetFloat("Transparency", sliderTransparency.value);
+        rd.material.color = new Color(rd.material.color.r, rd.material.color.g, rd.material.color.b, sliderTransparency.value);
+        //rd.material.color.a = sliderTransparency.value;
+        
     }
 
     public void DisplayLineTrace()
@@ -251,7 +258,7 @@ public class UIParameters : MonoBehaviour
     public void CalculLines()
     {
        
-        //lineParticles.GetComponent<DrawLinesParticles>().Calcule();
+        lineParticles.GetComponent<DrawLinesParticles>().Calcule();
         
     }
 

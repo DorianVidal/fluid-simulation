@@ -448,7 +448,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -350}
+  m_AnchoredPosition: {x: 0, y: -420}
   m_SizeDelta: {x: 220, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1169448303833729941
@@ -1322,7 +1322,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 4235330813706342278}
   m_OnClick:
     m_PersistentCalls:
@@ -2049,6 +2049,7 @@ MonoBehaviour:
   SliderTension: {fileID: 8784948228956679046}
   SliderViscosity: {fileID: 7053964652200084962}
   SliderAdhesion: {fileID: 5891943458202694933}
+  SliderTransparency: {fileID: 0}
   IFCohesion: {fileID: 5158642442440973181}
   IFTension: {fileID: 8959158943656032984}
   IFViscosity: {fileID: 8459852547016418672}
@@ -3560,7 +3561,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!1 &7091777380638580143
 GameObject:
   m_ObjectHideFlags: 0
@@ -3646,7 +3647,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.25
+  m_Value: 0.335
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3878,7 +3879,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -420}
+  m_AnchoredPosition: {x: 0, y: -350}
   m_SizeDelta: {x: 220, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8073704141599155826
