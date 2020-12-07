@@ -33,7 +33,7 @@ public class DrawLinesParticles : MonoBehaviour
             GameObject instance = Instantiate(goLineTraceByParticle);
             listgoLines.Add(instance.GetComponent<ParticlePos>());
             instance.transform.parent = gameObject.transform;
-            instance.GetComponent<ParticlePos>().SetValues(fcContainer, fsaFlexSourceActor, GGradientColor, fTimeBetweenPos, iParticleToSkip * i + iParticleMeshNumber);
+            instance.GetComponent<ParticlePos>().SetValues(fcContainer, fsaFlexSourceActor, GGradientColor, fTimeBetweenPos, i);//iParticleToSkip * i + iParticleMeshNumber
         }
         timer = fsaFlexSourceActor.lifeTime;
     }
@@ -88,7 +88,7 @@ public class DrawLinesParticles : MonoBehaviour
 
     public void Calcule() {
 
-        listgoLines.ForEach((Line) => { Destroy(Line); });
+        listgoLines.ForEach((Line) => { Destroy(Line.gameObject); });
         Start();
     }
 

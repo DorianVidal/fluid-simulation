@@ -681,7 +681,7 @@ namespace NVIDIA.Flex
             FlexExt.UnmapParticleData(m_containerHandle);
         }
 
-        ParticleData m_particleData = new ParticleData();
+        public ParticleData m_particleData = new ParticleData();
         void UpdateSolver()
         {
             m_particleData.container = this;

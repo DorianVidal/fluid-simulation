@@ -10,12 +10,12 @@ public class UILeft : MonoBehaviour
         if (Input.mousePosition.x / Screen.width < 0.206f)
         {
             Panel.GetComponent<Animator>().SetBool("Open", true);
-            print("Open");
+            //print("Open");
         }
         else
         {
             Panel.GetComponent<Animator>().SetBool("Open", false);
-            print("Close");
+            //print("Close");
         }
     }
 }

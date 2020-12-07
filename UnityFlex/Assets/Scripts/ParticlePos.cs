@@ -40,15 +40,23 @@ public class ParticlePos : MonoBehaviour
 
         if (fChrono <= 0)
         {
-            if (fcContainer.m_particleArray[fcContainer.m_particleArray.Length - iBeforeLastParticle] != Vector4.zero && listlrLineRenderer.Count < fsaFlexSourceActor.lifeTime * 8)
+            bool CanStop = false;
+            //print("Age = " + fsaFlexSourceActor.ages[iBeforeLastParticle]);
+            //if (fsaFlexSourceActor.ages[iBeforeLastParticle] <= 5.0f)
+            if (fsaFlexSourceActor.ages[iBeforeLastParticle] + 1 < fsaFlexSourceActor.lifeTime / 2)
             {
-                CreateLine();
+                CanStop = true;
+            }
+            if (!CanStop && fcContainer.m_particleArray[fsaFlexSourceActor.m_indices[iBeforeLastParticle]] != Vector4.zero && listlrLineRenderer.Count < fsaFlexSourceActor.lifeTime * 5)
+            {
+                 CreateLine();
+                
                 gameObject.GetComponentInParent<DrawLinesParticles>().StartOfLines();
                 if (listlrLineRenderer.Count == 2)
-                    listlrLineRenderer[0].SetPosition(0, fcContainer.m_particleArray[fcContainer.m_particleArray.Length - iBeforeLastParticle]);
+                    listlrLineRenderer[0].SetPosition(0, fcContainer.m_particleArray[fsaFlexSourceActor.m_indices[iBeforeLastParticle]]);
 
-                if (listlrLineRenderer.Count == fsaFlexSourceActor.lifeTime * 8)
-                    listlrLineRenderer[listlrLineRenderer.Count - 1].SetPosition(1, fcContainer.m_particleArray[fcContainer.m_particleArray.Length - iBeforeLastParticle]);
+                if (listlrLineRenderer.Count == fsaFlexSourceActor.lifeTime * 5)
+                    listlrLineRenderer[listlrLineRenderer.Count - 1].SetPosition(1, fcContainer.m_particleArray[fsaFlexSourceActor.m_indices[iBeforeLastParticle]]);
                 //lrLineRenderer.positionCount = lrLineRenderer.positionCount + 1;
                 //lrLineRenderer.SetPosition(i, fcContainer.m_particleArray[fcContainer.m_particleArray.Length - iBeforeLastParticle]);
                 //i++;
@@ -147,15 +155,17 @@ public class ParticlePos : MonoBehaviour
         return speed;
     }
 
-    void CreateLine()
-    {
-        listlrLineRenderer[i].SetPosition(1, fcContainer.m_particleArray[fcContainer.m_particleArray.Length - iBeforeLastParticle]);
+    
 
-        GameObject instance = Instantiate(goLineRenderer);
-        instance.transform.parent = gameObject.transform;
-        listlrLineRenderer.Add(instance.GetComponent<LineRenderer>());
-        listlrLineRenderer[i + 1].SetPosition(0, fcContainer.m_particleArray[fcContainer.m_particleArray.Length - iBeforeLastParticle]);
-        listlrLineRenderer[i + 1].SetPosition(1, fcContainer.m_particleArray[fcContainer.m_particleArray.Length - iBeforeLastParticle]);
-        i++;
+    void CreateLine()
+    {        
+            listlrLineRenderer[i].SetPosition(1, fcContainer.m_particleArray[fsaFlexSourceActor.m_indices[iBeforeLastParticle]]);
+
+            GameObject instance = Instantiate(goLineRenderer);
+            instance.transform.parent = gameObject.transform;
+            listlrLineRenderer.Add(instance.GetComponent<LineRenderer>());
+            listlrLineRenderer[i + 1].SetPosition(0, fcContainer.m_particleArray[fsaFlexSourceActor.m_indices[iBeforeLastParticle]]);
+            listlrLineRenderer[i + 1].SetPosition(1, fcContainer.m_particleArray[fsaFlexSourceActor.m_indices[iBeforeLastParticle]]);
+            i++; 
     }
 }

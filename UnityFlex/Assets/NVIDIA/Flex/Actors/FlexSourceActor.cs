@@ -186,7 +186,7 @@ namespace NVIDIA.Flex
         [NonSerialized]
         int m_count;
         [NonSerialized]
-        int[] m_indices;
+        public int[] m_indices;
         [NonSerialized]
         float[] m_ages;
 
