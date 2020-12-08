@@ -12,12 +12,14 @@ public class UIParameters : MonoBehaviour
 {
     /***************************************************PROPERTIES***********************************************************/
     bool toggle = true;
+    bool toggle2 = true;
 
     //Flex
     public FlexContainer flexContainer;
 
     //LineTrace   
     private GameObject lineParticles;
+    private GameObject PressionParticles;
 
     //Materials
     private Renderer rd;
@@ -74,6 +76,10 @@ public class UIParameters : MonoBehaviour
 
         lineParticles = GameObject.FindObjectOfType<DrawLinesParticles>().gameObject;
         lineParticles.SetActive(toggle);
+
+        PressionParticles = GameObject.FindObjectOfType<DrawParticlesSoft>().gameObject;
+        PressionParticles.SetActive(toggle2);
+
         rd.material.SetFloat("Transparency", 1.0f);
 
     }
@@ -253,6 +259,14 @@ public class UIParameters : MonoBehaviour
         //BtnCalculTraj.interactable(TGTrajectories.GetComponent<Toggle>().isOn);
         BtnCalculTraj.interactable = toggle;
         lineParticles.SetActive(toggle);    
+    }
+    public void DisplayPression()
+    {
+        toggle2 = !toggle2;
+
+        //BtnCalculTraj.interactable(TGTrajectories.GetComponent<Toggle>().isOn);
+        BtnCalculTraj.interactable = toggle2;
+        PressionParticles.SetActive(toggle2);
     }
 
     public void CalculLines()
