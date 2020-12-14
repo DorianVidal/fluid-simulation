@@ -36,6 +36,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Flex Samples/9. Fluid Renderer/Fluid Renderer.unity
     guid: 1112609ce9d26474fa79e5771846f2a6
   - enabled: 1
-    path: Assets/Scenes/Aort.unity
+    path: Assets/Scenes/Aorta.unity
     guid: b6dc890c842c79e4c832c3b80177c51c
   m_configObjects: {}
