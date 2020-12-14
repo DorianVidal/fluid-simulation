@@ -86,7 +86,7 @@ public class DrawLinesParticles : MonoBehaviour
         bEndLine = true;
     }
 
-    public void Calcule() {
+    public void CalculeTraj() {
 
         listgoLines.ForEach((Line) => { Destroy(Line.gameObject); });
         Start();

@@ -78,7 +78,11 @@ public class DrawParticlesSoft : MonoBehaviour
 
        
     }
-
+    public void CalculePression()
+    {
+        listLineRenderer.ForEach((Line) => { Destroy(Line.gameObject); });
+        Start();
+    }
 
 
 }

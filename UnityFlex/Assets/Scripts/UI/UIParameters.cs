@@ -47,6 +47,7 @@ public class UIParameters : MonoBehaviour
 
     //Buttons
     public Button BtnCalculTraj;
+    public Button BtnCalculPression;
     /***************************************************FUNCTIONS***********************************************************/
     //Functions
 
@@ -265,16 +266,17 @@ public class UIParameters : MonoBehaviour
         toggle2 = !toggle2;
 
         //BtnCalculTraj.interactable(TGTrajectories.GetComponent<Toggle>().isOn);
-        BtnCalculTraj.interactable = toggle2;
+        BtnCalculPression.interactable = toggle2;
         PressionParticles.SetActive(toggle2);
     }
 
     public void CalculLines()
     {
-       
-        lineParticles.GetComponent<DrawLinesParticles>().Calcule();
-        
+        lineParticles.GetComponent<DrawLinesParticles>().CalculeTraj();
     }
 
-    
+    public void CalculPression()
+    {
+        PressionParticles.GetComponent<DrawParticlesSoft>().CalculePression();
+    }
 }
