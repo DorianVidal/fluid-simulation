@@ -5,16 +5,19 @@ using UnityEngine.UIElements;
 
 public class Rotate : XYZ
 {
+    private Vector3 offset2;
     public override void MouseDown()
     {
         screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.parent.parent.parent.position);
 
         offset = Ggizmo.goSelect.transform.rotation.eulerAngles - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+        offset2 = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
         base.MouseDown();
     }
     public override void MouseDrag()
     {
-        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+        //Vector3 curScreenPoint = new Vector3(Input.mousePosition.x * 10, Input.mousePosition.y * 10, screenPoint.z * 10);
+        Vector3 curScreenPoint = new Vector3((offset2.x - Input.mousePosition.x) * 5, (offset2.y - Input.mousePosition.y) * 5, (offset2.z - screenPoint.z) * 5);
         Vector3 curRotation = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset; //* Ggizmo.fRotationSpeed;// + offset;
 
         if (X)
